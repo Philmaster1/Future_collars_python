@@ -1,2 +1,13 @@
 # created by virtualenv automatically
 
+class Books:
+
+ class Logger:
+    def __init__(self, title, author, available= True):
+    self.title = title
+    self.author = author
+    self.available = available
+
+    def load_books_from(filename):
+    books = []
+        try:
