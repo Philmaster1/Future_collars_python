@@ -1,5 +1,5 @@
-my_list = ("apple", "banana", "orange", "cherry")
-print(my_list[3])
-
+this_list = ["apple", "banana", "cherry"]
+mylist = this_list.copy()
+print(mylist)
 
 
