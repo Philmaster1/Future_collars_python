@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History - Accounting Warehouse App</title>
+    <link rel="stylesheet" href="styles/spectre.min.css">
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Transaction History</h1>
+        <div id="history-container">
+            <p>Loading history...</p>
+        </div>
+    </div>
+
+    <script>
+        // Function to fetch and display history based on optional URL parameters
+        function fetchHistory() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const from = urlParams.get('from');
+            const to = urlParams.get('to');
+
+            // Simulated fetch request (replace with actual API call)
+            const historyData = [
+                { date: '2023-01-01', type: 'Purchase', product: 'Item A', amount: 100 },
+                { date: '2023-01-02', type: 'Sale', product: 'Item B', amount: 50 },
+                { date: '2023-01-03', type: 'Balance Change', amount: 20 },
+            ];
+
+            const filteredHistory = historyData.filter(item => {
+                const itemDate = new Date(item.date);
+                return (!from || itemDate >= new Date(from)) && (!to || itemDate <= new Date(to));
+            });
+
+            const historyContainer = document.getElementById('history-container');
+            historyContainer.innerHTML = '';
+
+            if (filteredHistory.length === 0) {
+                historyContainer.innerHTML = '<p>No history found for the selected range.</p>';
+            } else {
+                const list = document.createElement('ul');
+                filteredHistory.forEach(item => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = ${item.date} - ${item.type}: ${item.product ? item.product : ''} ${item.amount ? item.amount : ''};
+                    list.appendChild(listItem);
+                });
+                historyContainer.appendChild(list);
+            }
+        }
+
+        // Call the function to fetch history on page load
+        window.onload = fetchHistory;
+    </script>
+</body>
+</html>

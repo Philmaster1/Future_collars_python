@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balance Change</title>
+    <link rel="stylesheet" href="styles/spectre.min.css">
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Balance Change</h1>
+        <form id="balanceChangeForm">
+            <div class="form-group">
+                <label for="operation">Operation:</label>
+                <select id="operation" name="operation" required>
+                    <option value="add">Add</option>
+                    <option value="subtract">Subtract</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="amount">Amount:</label>
+                <input type="number" id="amount" name="amount" required min="0.01" step="0.01">
+            </div>
+            <div id="errorMsg" class="text-error" style="display:none;"></div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    <script>
+        document.getElementById('balanceChangeForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const amount = parseFloat(document.getElementById('amount').value);
+            const errorMsg = document.getElementById('errorMsg');
+            if (isNaN(amount) || amount <= 0) {
+                errorMsg.textContent = "Please enter a valid positive amount.";
+                errorMsg.style.display = "block";
+            } else {
+                errorMsg.style.display = "none";
+                // Add your form submission logic here
+                location.reload(); // Simulate refresh after submit
+            }
+        });
+    </script>
+</body>
+</html>
