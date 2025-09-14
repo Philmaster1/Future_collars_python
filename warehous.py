@@ -22,6 +22,7 @@ def save_data(filename, data):
     except Exception as e:
         print(f"Error saving {filename}: {e}")
 
+
 # Load at startup
 balance = load_data(BALANCE_FILE, 0)
 inventory = load_data(INVENTORY_FILE, {})
