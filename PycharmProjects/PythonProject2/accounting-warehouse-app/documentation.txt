@@ -1,0 +1,92 @@
+# Accounting and Warehouse Management System
+
+This project is a web application designed for managing accounting and warehouse operations. It includes a Python Flask backend (with SQLite database using Flask-SQLAlchemy) for API endpoints and a static HTML/CSS/JS frontend.
+
+## Project Structure
+
+
+accounting-warehouse-app
+├── src
+│   ├── index.html         # Main page displaying stock levels and account balance
+│   ├── purchase.html      # Form for purchasing products
+│   ├── sale.html          # Form for selling products
+│   ├── balance.html       # Form for changing account balance
+│   ├── history.html       # Subpage for viewing transaction history
+│   ├── styles
+│   │   ├── styles.css     # Custom styles for the application
+│   │   └── spectre.min.css # Minified Spectre.css framework
+├── README.md              # Project documentation
+
+accounting-warehouse-backend
+├── src
+│   ├── app.py             # Flask application entry point
+│   ├── models             # Database models (SQLAlchemy)
+│   │   └── __init__.py    # Stock, Account, Transaction models
+│   ├── routes
+│   │   ├── stock_routes.py      # /stock endpoint
+│   │   ├── purchase_routes.py   # /purchase endpoint
+│   │   ├── sale_routes.py       # /sale endpoint
+│   │   ├── account_routes.py    # /balance endpoint
+│   │   └── history_routes.py    # /history endpoint
+│   └── ...
+├── requirements.txt        # Python dependencies
+
+
+## Features
+
+- *Main Page*: Displays current stock levels and account balance (data fetched from backend).
+- *Purchase Form*: Allows users to record purchases (POST to backend).
+- *Sale Form*: Enables sales transactions (POST to backend).
+- *Balance Change Form*: Updates account balance (PUT to backend).
+- *History Subpage*: Displays transaction history (GET from backend, supports range).
+- *Persistent Data*: All data is stored in an SQLite database using Flask-SQLAlchemy.
+
+## Setup Instructions
+
+### Backend (Flask API)
+
+1. Navigate to the backend directory:
+
+   cd accounting-warehouse-backend/src
+
+2. Create and activate a virtual environment:
+
+   python3 -m venv venv
+   source venv/bin/activate
+
+3. Install dependencies:
+
+   pip install flask flask-cors flask-sqlalchemy
+
+4. Run the backend server:
+
+   python app.py
+
+   The API will be available at http://localhost:5000.
+
+### Frontend (Static HTML)
+
+1. Navigate to the frontend directory:
+
+   cd accounting-warehouse-app/src
+
+2. Start a local web server:
+
+   python3 -m http.server 8000
+
+3. Open http://localhost:8000/index.html in your browser.
+
+## Usage
+
+- Use the main page to view current stock and balance (fetched from backend).
+- Navigate to purchase, sale, or balance forms to submit transactions (communicates with backend).
+- View transaction history on the history page.
+
+## Database
+
+- The backend uses SQLite for data persistence.
+- Database tables are created automatically on first run.
+
+## Contributing
+
+Contributions are welcome! Please submit a pull request or open an issue for any enhancements or

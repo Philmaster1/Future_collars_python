@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My page</title>
+</head>
+<body>
+Hello Flask
+
+{% if name %}Hello {{name}} {% else %}Hello Stranger{% endif %}
+
+<ol></ol>
+<form action="/myform" method="POST">
+  <label for="form_name">Name:</label>
+  <input type="text" id="form_name" name="form_name"><br>
+
+  <label for="form_lastname">Lastname:</label>
+  <input type="text" id="form_lastname" name="form_las♠tname"><br>
+
+  <label for="form_email">Email:</label>
+  <input type="text" id="form_email" name="form_email"><br>
+
+  <label for="form_number">Phone:</label>
+  <input type="text" id="form_number" name="form_number"><br>
+
+  <label for="birthday">jj/dd/AAAA:</label>
+  <input type="text" id="birthday" name="birthday"><br>
+
+  <form action="/submit-form" method="post">
+
+  <input type="submit" value="Submit"><br>
+
+<form></form>
+
+ <html>
